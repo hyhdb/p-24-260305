@@ -36,7 +36,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/write")
-    @Transactional
+    @Transactional(readOnly = true)
     public String writeForm(@ModelAttribute("form") WriteRequestForm form) {
         return "write";
     }
