@@ -36,6 +36,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/write")
+    @Transactional
     public String writeForm(@ModelAttribute("form") WriteRequestForm form) {
         return "write";
     }
@@ -66,6 +67,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}/modify")
+    @Transactional(readOnly = true)
     public String modifyForm(@PathVariable int id, @ModelAttribute("form") ModifyRequestForm form) {
 
         Post post = postService.findById(id).get();
@@ -99,6 +101,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
+    @Transactional(readOnly = true)
     public String detail(@PathVariable int id, Model model) {
         Post post = postService.findById(id).get();
         model.addAttribute("post", post);
