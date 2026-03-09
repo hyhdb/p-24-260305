@@ -18,4 +18,8 @@ public class Comment extends BaseEntity {
     @ManyToOne
     private Post post;
 
+    public void update(String content) {
+        this.content = content;
+    }
+
 }
