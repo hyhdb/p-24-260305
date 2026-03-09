@@ -40,7 +40,11 @@ public class CommentController {
     }
 
     @GetMapping("/posts/{postId}/comments/{commentId}/delete")
+    @Transactional
     public String delete(@PathVariable int postId, @PathVariable int commentId) {
         Post post = postService.findById(postId).get();
+        post.deleteComment(commentId);
+
+        return "redirect:/posts/%d".formatted(post.getId());
     }
 }
