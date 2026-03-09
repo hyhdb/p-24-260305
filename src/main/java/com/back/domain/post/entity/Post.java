@@ -16,6 +16,9 @@ public class Post extends BaseEntity {
     private String content;
 
     public void update(String title, String content) {
+        //post 수정 로직1
+        //post 수정 로직2
+        //post 수정 로직3
         this.title = title;
         this.content = content;
     }
